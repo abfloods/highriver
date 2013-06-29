@@ -8,7 +8,7 @@ function FirefeedUI() {
   this._limit = 141;
   this._loggedIn = false;
   this._spinner = new Spinner();
-  this._firefeed = new Firefeed("https://yychelps.firebaseio.com/");
+  this._firefeed = new Firefeed("https://abfloods-highriver.firebaseIO.com/");
   this._unload = null;
 
   // Setup page navigation.
@@ -212,18 +212,6 @@ FirefeedUI.prototype.renderHome = function(e) {
 
   $("#header").html($("#tmpl-index-header").html());
 
-  // Preload animation.
-  var path = "img/curl-animate.gif";
-  var img = new Image();
-  img.src = path;
-
-  // Setup curl on hover.
-  $(".ribbon-curl").find("img").hover(function() {
-    $(this).attr("src", path);
-  }, function() {
-    $(this).attr("src", "img/curl-static.gif");
-  });
-
   var body = Mustache.to_html($("#tmpl-content").html(), {
     classes: "cf home", content: $("#tmpl-index-content").html()
   });
@@ -240,11 +228,6 @@ FirefeedUI.prototype.renderHome = function(e) {
 
   $("#about-link").remove();
 
-  // Attach handler to display the latest 5 sparks.
-  self._handleNewSpark(
-    "spark-index-list", 50,
-    self._firefeed.onLatestSpark.bind(self._firefeed)
-  );
   return function() { self._firefeed.unload(); };
 };
 

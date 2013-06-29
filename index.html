@@ -12,7 +12,16 @@
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="css/global.css" rel="stylesheet" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+	  ga('create', 'UA-42113725-1', 'abfloods.github.io');
+	  ga('send', 'pageview');
+
+	</script>
   </head>
 
   <body>
@@ -47,10 +56,9 @@
 
       <script id="tmpl-index-content" type="text/html">
         <div class="threefifth center aligncenter">
-		  <h1 class="main-heading"><img src="img/yychelps.jpg" alt="yychelps" /></h1>
-          <h1 class="main-heading"><img src="img/yychelps-2.jpg" alt="yychelps" /></h1>
+		  <h1 class="main-heading"><img src="img/wordmark-large.png" alt="ABFloods" /></h1>
           <h2 class="subheading">
-            A realtime volunteer request queue built with <a target="_blank" href="https://firebase.com">Firebase</a>. It&rsquo;s like twitter crossed with kickstarter.
+            Fast and effective, ABFloods helps you crowdsource the help that you need! Or you can log in as a volunteer to find which of your neighbours need help. It&rsquo;s like twitter crossed with kickstarter!
           </h2>
           <p class="big-copy pushv8">Please ask for no more resources than you need, and accept only the requests that you can fulfill.</p>
 
@@ -88,6 +96,10 @@
           </div>
 
           <div class="separator pushv4"></div>
+
+		<div class="pushv4">
+		     <a href="about.html" target="_blank" class="btn default pushv4">About/Tips</a>
+		</div>
 
         </div>
         <div class="twothird">
@@ -187,7 +199,7 @@
                 <a class="profile-link" href="/?profile={{author}}">{{by}}</a>
               </p>
               <p class="main-copy pushv">{{content}}</p>
-			  <p class="main-copy pushv">{{location}} [<a href="http://maps.google.com/?q={{location}}" target="_blank">Map</a>]</p>
+			  <p class="main-copy pushv">{{location}} [<a href="http://maps.google.com/?q={{location}} High River Alberta" target="_blank">Map</a>]</p>
               <p class="meta end">
                 <a class="spark-link" href="?spark={{sparkId}}">{{friendlyTimestamp}}</a>
               </p>
@@ -219,10 +231,9 @@
     </div><!-- #wrapper END -->
 
     <footer id="footer">
-      <ul>
-        <li id="about-link"><a href="about.html">About</a></li>
-        <li>Follow <a href="//twitter.com/firebase" target="_blank">@Firebase</a></li>
-      </ul>
+      	<ul>
+	        <li>Created by <a target="_blank" href="https://twitter.com/tombielecki" target="_blank">@tombielecki</a> and <a target="_blank" href="https://twitter.com/codr" target="_blank">@codr</a>. Special thanks to <a target="_blank" href="https://twitter.com/firebase" target="_blank">@Firebase</a> for backend and <a target="_blank" href="https://twitter.com/github" target="_blank">@Github</a> for hosting.</li>
+	      </ul>
     </footer>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
