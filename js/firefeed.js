@@ -92,6 +92,7 @@ Firefeed.prototype = {
         var ret = sparkSnap.val();
         if (ret !== null) {
           ret.pic = self._getPicURL(ret.author);
+		  $('#spark-'+sparkID).fadeOut(1000);
           onComplete(sparkSnap.name(), ret);
         }
 		// var id = spark[key];
