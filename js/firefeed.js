@@ -89,10 +89,10 @@ Firefeed.prototype = {
       var sparkID = snap.name();
       var sparkRef = self._firebase.child("sparks").child(sparkID);
       var handler = sparkRef.on("value", function(sparkSnap) {
+	    $('#spark-'+sparkID).fadeOut(1000);
         var ret = sparkSnap.val();
         if (ret !== null) {
           ret.pic = self._getPicURL(ret.author);
-		  $('#spark-'+sparkID).fadeOut(1000);
           onComplete(sparkSnap.name(), ret);
         }
 		// var id = spark[key];
