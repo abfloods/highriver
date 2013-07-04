@@ -142,7 +142,11 @@ FirefeedUI.prototype._handleNewSpark = function(listId, limit, func) {
         new Date(spark.timestamp || 0)
       );
 	  if (spark.fulfilled<spark.requested){
-        var sparkEl = $(Mustache.to_html($("#tmpl-spark").html(), spark)).hide();
+        if(this._loggedIn){
+          var sparkEl = $(Mustache.to_html($("#tmpl-spark").html(), spark)).hide();
+        } else {
+	      var sparkEl = $(Mustache.to_html($("#tmpl-spark-loggedout").html(), spark)).hide();
+        }
         $("#" + listId).prepend(sparkEl);
         sparkEl.slideDown("slow");
 	  };
@@ -227,6 +231,12 @@ FirefeedUI.prototype.renderHome = function(e) {
   });
 
   $("#about-link").remove();
+
+  // Attach handler to display the latest 10 sparks.
+  self._handleNewSpark(
+    "spark-index-list", 10,
+    self._firefeed.onLatestSpark.bind(self._firefeed)
+  );
 
   return function() { self._firefeed.unload(); };
 };
