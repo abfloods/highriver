@@ -250,9 +250,9 @@ FirefeedUI.prototype.renderHome = function(e) {
 
   $("#about-link").remove();
 
-  // Attach handler to display the latest 10 sparks.
+  // Attach handler to display the latest 100 sparks.
   self._handleNewSpark(
-    "spark-index-list", 10,
+    "spark-index-list", 100,
     self._firefeed.onLatestSpark.bind(self._firefeed)
   );
 
