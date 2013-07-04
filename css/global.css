@@ -77,6 +77,11 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 	display: table-cell;
 }
 
+#map{
+	height: 450px;
+	bottom: 20px;
+}
+
 .img img{display: block;}
 .relative{position: relative;}
 

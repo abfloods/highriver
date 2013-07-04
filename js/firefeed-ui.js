@@ -10,6 +10,7 @@ function FirefeedUI() {
   this._spinner = new Spinner();
   this._firefeed = new Firefeed("https://abfloods-highriver.firebaseIO.com/");
   this._unload = null;
+  var map;
 
   // Setup page navigation.
   this._setupHandlers();
@@ -141,6 +142,23 @@ FirefeedUI.prototype._handleNewSpark = function(listId, limit, func) {
       spark.friendlyTimestamp = self._formatDate(
         new Date(spark.timestamp || 0)
       );
+
+      var loc = spark.location + " high river alberta";
+
+      GMaps.geocode({
+	   address: loc,
+	   callback: function(results, status) {
+	     if (status == 'OK') {
+	       var latlng = results[0].geometry.location;
+	       map.setCenter(latlng.lat(), latlng.lng());
+	       map.addMarker({
+	         lat: latlng.lat(),
+	         lng: latlng.lng()
+	      });
+	     }
+	   }
+ 	  });
+
 	  if (spark.fulfilled<spark.requested){
         if(this._loggedIn){
           var sparkEl = $(Mustache.to_html($("#tmpl-spark").html(), spark)).hide();
@@ -237,6 +255,15 @@ FirefeedUI.prototype.renderHome = function(e) {
     "spark-index-list", 10,
     self._firefeed.onLatestSpark.bind(self._firefeed)
   );
+
+  $(document).ready(function(){
+      map = new GMaps({
+        div: '#map',
+        lat: 50.580102,
+        lng: -113.870731,
+        zoom: 13
+      });
+    });
 
   return function() { self._firefeed.unload(); };
 };
